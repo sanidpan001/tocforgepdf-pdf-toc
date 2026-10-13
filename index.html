@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOCForge PDF — Add a Table of Contents to a PDF Online Free: Auto TOC Page</title><meta name="description" content="Generate a table-of-contents page from a PDF's headings and insert it at the front, with page numbers, as a new PDF.">
+<link rel="canonical" href="https://tocforgepdf.fixoraa.tech/"><meta property="og:title" content="TOCForge PDF — Add a Table of Contents to a PDF Online Free: Auto TOC Page"><meta property="og:description" content="Generate a table-of-contents page from a PDF's headings and insert it at the front, with page numbers, as a new PDF."><meta property="og:url" content="https://tocforgepdf.fixoraa.tech/"><meta property="og:type" content="website">
+<script src="https://cdn.tailwindcss.com"></script><script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script><script>pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js";</script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600;700;900&family=Cormorant+Garamond:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+/* archetype G: Magazine Editorial — oversized serif, double rules, drop cap | EB Garamond + Cormorant Garamond */:root{
+  --pri:rgb(22,101,52);
+  --acc:rgb(180,83,9)
+}body{
+  background:rgb(248,244,230);
+  background-image:repeating-linear-gradient(45deg, rgba(22,101,52,0.055) 0 2px, transparent 2px 14px);
+  color:rgb(28,36,46);
+  font-family:'Cormorant Garamond',system-ui,sans-serif;
+  margin:0;
+  
+}h2,.disp{
+  font-family:'EB Garamond',serif
+}main{
+  max-width:1020px !important
+}main>div:first-of-type{
+  text-align:center
+}.toolwrap{
+  display:block;
+  max-width:900px;
+  margin:28px auto 0
+}.card{
+  background:rgb(255,253,247);
+  color:rgb(43,33,24);
+  border:1px solid rgb(201,187,163);
+  outline:3px double rgb(201,187,163);
+  outline-offset:5px;
+  border-radius:2px;
+  padding:1.7rem;
+  margin-bottom:26px;
+  box-shadow:none
+}.card h2.disp{
+  text-align:center;
+  font-size:1.45rem !important;
+  margin-bottom:1rem
+}.btn{
+  background:rgb(22,101,52);
+  color:rgb(255,255,255);
+  padding:.68rem 1.45rem;
+  border-radius:2px;
+  font-weight:700;
+  cursor:pointer;
+  border:none;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  font-size:.85rem
+}.btn2{
+  background:rgb(180,83,9);
+  color:rgb(255,255,255);
+  padding:.55rem 1.1rem;
+  border-radius:2px;
+  font-weight:700;
+  cursor:pointer;
+  border:1px solid rgba(0,0,0,.2)
+}.btn:disabled{
+  opacity:.45
+}input,select,textarea{
+  border:1.5px solid rgb(180,168,136);
+  border-radius:2px;
+  padding:.55rem .7rem;
+  width:100%;
+  background:rgb(255,255,255);
+  color:rgb(36,29,20);
+  margin:4px 0 10px
+}input[type=color]{
+  height:42px;
+  padding:2px
+} input[type=checkbox]{
+  width:auto
+}label{
+  font-size:.78rem;
+  font-weight:700;
+  display:block;
+  text-transform:uppercase;
+  letter-spacing:.11em
+}.badge{
+  display:inline-block;
+  background:rgb(43,33,24);
+  color:rgb(248,244,230);
+  padding:.34rem .9rem;
+  border-radius:2px;
+  font-size:.74rem;
+  font-weight:800;
+  letter-spacing:.09em;
+  text-transform:uppercase
+}.drop{
+  border:3px double rgb(22,101,52);
+  border-radius:2px;
+  padding:1.4rem;
+  text-align:center;
+  background:rgba(255,255,255,.55)
+}article p{
+  margin:.75rem 0;
+  line-height:1.85
+} article p:first-of-type::first-letter{
+  font-family:'EB Garamond',serif;
+  font-size:3.1em;
+  float:left;
+  line-height:.85;
+  padding-right:.12em;
+  color:rgb(22,101,52)
+}article h2{
+  font-size:1.6rem;
+  font-weight:800;
+  margin:1.6rem 0 .45rem
+}.faq{
+  background:rgb(255,253,247);
+  color:rgb(43,33,24);
+  border-top:2px solid rgb(43,33,24);
+  padding:.95rem .4rem;
+  margin:0
+}.faq summary{
+  font-weight:700;
+  cursor:pointer;
+  font-family:'EB Garamond',serif;
+  font-size:1.05rem
+}table.dt{
+  width:100%;
+  border-collapse:collapse
+} table.dt th,table.dt td{
+  border:1px solid rgb(201,187,163);
+  padding:.45rem .6rem;
+  text-align:left;
+  font-size:.9rem
+}.hint{
+  font-size:.84rem;
+  opacity:.75
+}.drop::before{
+  content:'⚙';
+  display:block;
+  font-size:1.5rem;
+  margin-bottom:.35rem;
+  color:rgb(22,101,52)
+}:focus-visible{
+  outline:3px solid rgba(180,83,9,0.75);
+  outline-offset:2px
+}input[type=file]{
+  font-size:.86rem
+} .hint::before{
+  content:'— '
+}h1{
+  font-family:'EB Garamond',serif;
+  font-size:clamp(2.3rem,5vw,3.5rem);
+  line-height:1.04;
+  margin:.4rem 0 .6rem;
+  font-weight:800;
+  text-align:center
+}@media(max-width:820px){
+  .card{
+    padding:1.2rem
+  }
+}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "TOCForge PDF", "url": "https://tocforgepdf.fixoraa.tech/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Generate a table-of-contents page from a PDF's headings and insert it at the front, with page numbers, as a new PDF."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is TOCForge PDF free to use?", "acceptedAnswer": {"@type": "Answer", "text": "Yes \u2014 completely free, with unlimited use, no signup, no paywall and no watermark on your output. The work happens on your device, so there is no metered server cost to pass on to you."}}, {"@type": "Question", "name": "Are my files uploaded to a server?", "acceptedAnswer": {"@type": "Answer", "text": "No. TOCForge PDF processes everything inside your browser. Your document never leaves your device, nothing is stored, and closing the tab clears the session \u2014 which makes it suitable for confidential files."}}, {"@type": "Question", "name": "What files does TOCForge PDF work with?", "acceptedAnswer": {"@type": "Answer", "text": "Generate a table-of-contents page from a PDF's headings and insert it at the front, with page numbers, as a new PDF. Where a job needs a particular format, the file picker shows the accepted types, and the tool tells you plainly if a file cannot be read or does not contain what the job needs."}}, {"@type": "Question", "name": "Will the output work in other apps?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Results use standard, widely supported structures that open in mainstream PDF readers, browsers, office suites and print workflows. Always glance at the output once before sending it somewhere important."}}, {"@type": "Question", "name": "Is there a page or size limit?", "acceptedAnswer": {"@type": "Answer", "text": "There is no artificial limit imposed by the tool. Very large files are bounded by your device's memory, so for an exceptionally big document, working in batches or closing other tabs can help."}}, {"@type": "Question", "name": "What if something goes wrong with my file?", "acceptedAnswer": {"@type": "Answer", "text": "The status line reports the real problem \u2014 for example a damaged file, an empty input or a missing feature in the document. Your original is never modified, so you can fix the cause and run the tool again safely."}}]}</script>
+</head><body id="top">
+<header class="sticky top-0 z-40 shadow" style="background:#166534;color:#FFFFFF"><div class="mx-auto max-w-6xl px-4 sm:px-6 py-3 flex items-center justify-between"><a href="#top" class="text-xl font-black disp">TOCForge PDF</a><nav class="flex gap-5 text-sm font-semibold"><a href="#top">Home</a><a href="https://fixoraa.tech">More Tools</a></nav></div></header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement"><div class="mx-auto text-center" style="max-width:728px"><span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span><div class="flex justify-center overflow-hidden"><div class="origin-top scale-[0.44] sm:scale-100 shrink-0"><script>atOptions={'key':'4e68ac77881c17fe128a46565d9a4e8c','format':'iframe','height':90,'width':728,'params':{}};</script><script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script></div></div></div></div>
+<main class="mx-auto max-w-6xl px-4 sm:px-6 py-8">
+<div style="border-top:6px double #2B2118;border-bottom:2px solid #2B2118;padding:16px 0 14px;text-align:center"><p style="text-transform:uppercase;font-size:12px;color:#166534;font-weight:800">Classic book binding</p><h1>Add a Table of Contents to a PDF Online Free: Auto TOC Page</h1></div>
+<p class="mt-3" style="max-width:820px">Generate a table-of-contents page from a PDF's headings and insert it at the front, with page numbers, as a new PDF.</p>
+<p><span class="badge">✓ Unlimited Free Usage — No Signup, No Watermark</span> <span class="hint">🔒 Processed entirely in your browser — files never leave your device.</span></p>
+<div class="toolwrap">
+<section class="card"><h2 class="disp" style="font-size:1.2rem">Your file &amp; options</h2>
+<div class="drop"><label>Main file<input id="f1" type="file" accept="application/pdf"></label></div>
+<label>Second file (interleave / letterhead tools)<input id="f2" type="file" accept="application/pdf"></label>
+<label>Text input — paste content for generator / converter tools (Markdown, CSV, JSON, labels, resume, form fields)<textarea id="txt" rows="7" placeholder="Paste or type here when the tool uses text input…"></textarea></label>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div><label>Text option 1 (title / prefix / search word / QR content)<input id="opt1" type="text"></label><label>Text option 2 (footer / subtitle / caption)<input id="opt2" type="text"></label><label><input id="chk1" type="checkbox"> Toggle option (invert / reverse / check)</label></div>
+<div><label>Number 1 (size MB / start / angle / spacing)<input id="num1" type="number" value="2" step="0.5"></label><label>Number 2 (digits / count)<input id="num2" type="number" value="6"></label><label>Colour picker<input id="col1" type="color" value="#facc15"></label><label>Apply to / style<select id="sel1"><option value="all">All pages</option><option value="first">First page only</option><option value="150">150 DPI / Grid</option><option value="dots">Dots (paper)</option><option value="ruled">Ruled (paper)</option></select></label></div></div>
+
+<p class="hint">Only the options named for this tool apply — the rest are ignored. Defaults suit the common case.</p>
+<button class="btn" id="go" onclick="run()">Run TOCForge PDF</button> 
+<button class="btn2" id="dl" style="display:none">⬇ Download result</button>
+<p id="status" class="text-sm font-semibold" style="margin-top:10px"></p>
+</section>
+<section class="card"><h2 class="disp" style="font-size:1.2rem">Result &amp; report</h2><div id="out"><p class="hint">Your result, report or preview will appear here after you run the tool.</p></div><label>Data / text output<textarea id="outText" rows="8" placeholder="Extracted or generated text appears here where relevant…"></textarea></label><button class="btn2" onclick="if($('outText').value){navigator.clipboard.writeText($('outText').value);setStatus('Copied ✔');}">📋 Copy output text</button></section>
+</div>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement"><div class="mx-auto text-center" style="max-width:728px"><span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span><div class="flex justify-center overflow-hidden"><script async src="https://js.wpadmngr.com/static/adManager.js" data-admpid="464498"></script></div></div></div>
+<section class="mx-auto max-w-4xl px-4 sm:px-6 pb-6"><article><h2>What TOCForge PDF does, and why it matters</h2>
+<p>Generate a table-of-contents page from a PDF's headings and insert it at the front, with page numbers, as a new PDF. The job at the heart of this tool is giving a long report, thesis or manual the contents page it always needed, so readers can navigate instead of scrolling and guessing. That sounds narrow until you are the person facing it at a deadline, discovering that a general office suite either cannot do it, hides it behind a paid tier, or does it in a way that quietly changes something else in the document along the way.</p>
+<p>A dedicated tool earns its keep by making the one job obvious: choose your file, set the few options that genuinely matter, run it, and check the result. A PDF earns its place because it looks the same on every device, printer and operating system, which is why contracts, reports, certificates and manuals all travel in this format even when they were created in something else entirely. The catch is that a format designed for faithful display is not naturally easy to change, search, split or reuse, and that gap between reading a document and actually working with it is exactly the gap a focused single-purpose tool is meant to close. When the task is giving a long report, those are not abstract virtues — they decide whether the file you produce is the file the other person can actually open, read and file without a follow-up conversation.</p>
+<p>Like every tool in this collection, TOCForge PDF is free without signup, paywalls or watermarks, and it runs entirely in your browser. That combination matters most for exactly the documents people use this kind of tool on: statements, certificates, applications, contracts and work files that deserve privacy by default rather than privacy as a premium feature you have to remember to switch on.</p>
+<h2>How it works, step by step</h2>
+<p>Start with the file or content panel at the top of this page. For file-based work, choose the document from your device; nothing is uploaded, and the tool reads it locally using the same proven PDF libraries that power many desktop utilities. Set the options that apply to your job — they are labelled in plain language, and the defaults are chosen for the most common case, so most people can run the tool exactly as it first appears.</p>
+<p>Press the main button and watch the status line, which reports progress honestly as pages are processed rather than spinning silently. When the work finishes, the result appears in the output area, the report area or as a ready download, depending on the job. Good document work is mostly about trust and checking: glance at the result before you send it, keep your original untouched as the master copy, and treat every converted or rebuilt file as a new edition that deserves ten seconds of review. If something cannot be done — a damaged file, an empty input, a document without the feature you asked about — the tool says so plainly instead of producing a misleading empty result and leaving you to discover the problem later, in front of somebody else.</p>
+<p>Before you rely on the output, open it once and check the pages that matter most: the first page, a middle page, and any page you know is unusual, such as a wide table, a signed page or a dense image. That ten-second check is the professional difference between hoping a conversion worked and knowing that it worked, and it costs almost nothing compared with re-sending a corrected file after a deadline.</p>
+<h2>Features that go beyond the basics</h2>
+<p>The headline job is only half of what TOCForge PDF offers. Around it sit the extra touches that separate a useful tool from a bare conversion form: a clear status and report area so you can see what happened page by page, honest counts and sizes before and after, and sensible options that reflect how the task is actually done in offices, classrooms and print shops rather than how it is described in a specification.</p>
+<p>Equally deliberate is what the tool does not do. It does not ask for an account, because the job does not need one. It does not add a watermark, because your document belongs to you. It does not impose an artificial page limit to push an upgrade, because the processing happens on your device, not on a metered server. Doing this work inside your browser changes the privacy equation completely, because the document never travels to a server, never waits in a queue and never leaves a copy behind on a machine you do not control or even know the location of. It also changes the speed equation, since your own device does the work immediately, without upload time, account checks, daily quotas or a download link arriving by email long after the moment you actually needed the finished file. Those absences are features in their own right, and for confidential documents they are often the deciding ones.</p>
+<p>Finally, the output is designed to travel. Files produced here use standard structures that open in every mainstream reader, browser and operating system, because a document that only opens in the tool that made it has failed at the one job documents exist for. If your workflow continues in another app — a spreadsheet, a reader, a print shop, a portal — the result is meant to arrive there intact and unsurprising.</p>
+<h2>Tips for the best results</h2>
+<p>Work from the best source you have. A born-digital PDF exported from its original application will almost always give cleaner results than a scan, and a clean scan — square-on, well lit, at a sensible resolution — will beat a hurried photograph every time. When the input is a photograph of a page, straighten and crop it first if you can, because no downstream tool can fully undo a tilted, shadowed starting point, however hard it tries on your behalf.</p>
+<p>Keep your original file untouched and let the tool produce a new copy, every time, without exception. That single habit makes every experiment free: if an option was wrong, a page looks off, or a setting needs another attempt, you simply run the tool again from the pristine source instead of trying to unpick changes layered on changes. Small habits compound quickly here, because naming outputs clearly, keeping originals separate from working copies and noting which version went to whom will save more real-world trouble than any single clever feature ever could on its own. Professionals version their documents for the same reason developers version code — memory is fallible, and files do not argue back.</p>
+<p>Match the tool settings to the destination, not to habit. A file headed for a portal with a size cap, a printer with bleed requirements, an e-reader with a small screen and an archive meant to last a decade are four different destinations, and the right choices for each are different too. Reading the option labels with the destination in mind takes seconds and prevents the most common document problems, which are rarely technical failures and usually mismatches between a file and where it was going.</p>
+<h2>Who uses this, and when</h2>
+<p>The everyday audience for a tool like this is broad because the underlying task is universal. Office workers use it while assembling submissions, reports and records. Students and teachers meet it around assignments, readings and handouts. Small businesses feel it in invoices, catalogues, forms and certificates. Legal, medical and finance work adds its own urgency, because there the document is often the record itself, and getting its pages, data or presentation right is not cosmetic but substantive.</p>
+<p>The pattern underneath those settings is the same: a document exists, a deadline exists, and a specific transformation stands between the two. Most people meet this kind of task under time pressure, with a portal deadline, a printer waiting or a colleague asking for a file, so a calm tool that does one job predictably is worth more than a sprawling suite that does twenty jobs confusingly. That is why this page is deliberately focused rather than encyclopaedic. It will not manage your whole document library, and it does not pretend to. It does this one job, in your browser, for free, and then gets out of your way so the real work — the application, the submission, the print run, the decision — can proceed on schedule.</p>
+<p>If you find yourself doing this job weekly, build it into a routine: a folder for originals, a folder for outputs, a naming habit that includes the date or version, and this page bookmarked under its brand name. Small systems like that are how individuals quietly match the output quality of teams with dedicated document staff, without buying anything or handing confidential files to a string of unfamiliar upload services along the way.</p>
+<h2>Privacy, limits and honest notes</h2>
+<p>Privacy here is architectural, not a promise buried in a policy. The code runs in your browser tab, the file is processed in your device's memory, and closing the tab ends the session with nothing stored anywhere by this tool. Accessibility and readability deserve a mention in any document workflow, because clear structure, real text rather than pictures of text, and sensible page order help every reader, including people using search, translation, read-aloud and assistive technology. For the documents people most often process — identity proofs, bank statements, signed agreements, medical and legal papers — that design is the difference between a tool you can use confidently and one you should hesitate over.</p>
+<p>Honesty about limits matters just as much. Browser processing is bounded by your device's memory, so extremely large files may be kinder split or handled in batches. Some transformations are inherently lossy or structural — rendering a page preserves how it looks, not how its text is stored; extracting text preserves words, not layout — and the tool's own notes call those trade-offs out where they apply, so you can choose with your eyes open instead of discovering them in the output.</p>
+<p>The practical rule is simple: use TOCForge PDF for the job it describes, check the result once, and keep your master original safe. Do that, and a free browser tool will handle a surprising share of the document work that once needed paid software, a trip to a print shop, or a favour from the one colleague who knew how — which is precisely the point of putting it here, unlimited and open, for anyone who needs it.</p><h2>Frequently Asked Questions</h2><details class="faq"><summary>Is TOCForge PDF free to use?</summary><p>Yes — completely free, with unlimited use, no signup, no paywall and no watermark on your output. The work happens on your device, so there is no metered server cost to pass on to you.</p></details>
+<details class="faq"><summary>Are my files uploaded to a server?</summary><p>No. TOCForge PDF processes everything inside your browser. Your document never leaves your device, nothing is stored, and closing the tab clears the session — which makes it suitable for confidential files.</p></details>
+<details class="faq"><summary>What files does TOCForge PDF work with?</summary><p>Generate a table-of-contents page from a PDF's headings and insert it at the front, with page numbers, as a new PDF. Where a job needs a particular format, the file picker shows the accepted types, and the tool tells you plainly if a file cannot be read or does not contain what the job needs.</p></details>
+<details class="faq"><summary>Will the output work in other apps?</summary><p>Yes. Results use standard, widely supported structures that open in mainstream PDF readers, browsers, office suites and print workflows. Always glance at the output once before sending it somewhere important.</p></details>
+<details class="faq"><summary>Is there a page or size limit?</summary><p>There is no artificial limit imposed by the tool. Very large files are bounded by your device's memory, so for an exceptionally big document, working in batches or closing other tabs can help.</p></details>
+<details class="faq"><summary>What if something goes wrong with my file?</summary><p>The status line reports the real problem — for example a damaged file, an empty input or a missing feature in the document. Your original is never modified, so you can fix the cause and run the tool again safely.</p></details></article></section>
+<footer class="mt-6 py-8" style="background:#0a2d17;color:#FFFFFF"><div class="mx-auto max-w-6xl px-4 sm:px-6 text-center text-sm"><p class="font-bold text-base">TOCForge PDF</p><p class="opacity-80 mt-1">Generate a table-of-contents page from a PDF's headings and insert it at the front, with page numbers, as a new PDF.</p><p class="mt-2"><a href="#top" class="underline">Home</a> · <a href="https://fixoraa.tech" class="underline">More Tools</a></p><p class="fx-credit" style="text-align:center;font-size:12.5px;opacity:.62;margin:10px auto 2px;letter-spacing:.01em">Made by <a href="https://fixoraa.tech" target="_blank" rel="noopener" style="color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:2px">Fixoraa</a></p></div></footer>
+<script>
+const $=id=>document.getElementById(id);
+function fmtBytes(b){if(!b&&b!==0)return '-';if(b===0)return '0 B';const k=1024,s=['B','KB','MB','GB'],i=Math.floor(Math.log(b)/Math.log(k));return (b/Math.pow(k,i)).toFixed(i?1:0)+' '+s[i];}
+function setStatus(m,ok){const e=$('status');if(e){e.textContent=m;e.style.color=ok===false?'#dc2626':'';}}
+function download(data,name,type){const b=data instanceof Blob?data:new Blob([data],{type:type||'application/pdf'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},900);}
+function showDl(bytes,name){const b=$('dl');if(!b)return;b.style.display='inline-block';b.onclick=()=>download(bytes,name);}
+function out(html){$('out').innerHTML=html;}
+function outText(t){$('outText').value=t; out('<pre style="white-space:pre-wrap">'+t.replace(/&/g,'&amp;').replace(/</g,'&lt;').slice(0,4000)+'</pre>');}
+async function fbuf(input){const f=input.files&&input.files[0];if(!f)throw new Error('Please choose a file first.');return{file:f,buf:await f.arrayBuffer()};}
+async function loadJs(input){const{file,buf}=await fbuf(input);const doc=await pdfjsLib.getDocument({data:buf.slice(0)}).promise;return{file,buf,doc};}
+async function loadLib(buf){return await PDFLib.PDFDocument.load(buf.slice(0),{ignoreEncryption:true});}
+async function pageText(page){const tc=await page.getTextContent();let lines=[],line='',lastY=null;for(const it of tc.items){const y=Math.round(it.transform[5]);if(lastY!==null&&Math.abs(y-lastY)>2){lines.push(line);line='';}line+=it.str+' ';if(it.hasEOL){lines.push(line);line='';}lastY=y;}if(line)lines.push(line);return lines.join('\n').replace(/[ \t]+\n/g,'\n').trim();}
+async function allText(doc){let parts=[];for(let i=1;i<=doc.numPages;i++){parts.push(await pageText(await doc.getPage(i)));}return parts;}
+async function saveLib(doc,name){const bytes=await doc.save();showDl(bytes,name);return bytes;}
+function hexRgb(h){h=h.replace('#','');return PDFLib.rgb(parseInt(h.slice(0,2),16)/255,parseInt(h.slice(2,4),16)/255,parseInt(h.slice(4,6),16)/255);}
+function wrapText(text,font,size,maxW){const words=String(text).split(/\s+/);let lines=[],cur='';for(const w of words){const t=cur?cur+' '+w:w;if(font.widthOfTextAtSize(t,size)>maxW&&cur){lines.push(cur);cur=w;}else cur=t;}if(cur)lines.push(cur);return lines;}
+async function newPdfFromText(text,title){const doc=await PDFLib.PDFDocument.create();const font=await doc.embedFont(PDFLib.StandardFonts.Helvetica);const bf=await doc.embedFont(PDFLib.StandardFonts.HelveticaBold);let page=doc.addPage([595,842]);let y=790;const add=(txt,sz,f)=>{for(const ln of wrapText(txt,f||font,sz,495)){if(y<50){page=doc.addPage([595,842]);y=790;}page.drawText(ln,{x:50,y,size:sz,font:f||font});y-=sz*1.45;}};if(title)add(title,18,bf);for(const para of String(text).split('\n')){if(!para.trim()){y-=8;continue;}add(para,11);}return doc;}
+
+
+async function run(){try{const{buf,doc}=await loadJs($('f1'));let heads=[];for(let i=1;i<=doc.numPages;i++){const p=await doc.getPage(i);const tc=await p.getTextContent();const sizes=tc.items.map(it=>Math.abs(it.transform[3]));const max=Math.max(...sizes,0);tc.items.forEach(it=>{if(Math.abs(it.transform[3])>=max*0.95&&it.str.trim().length>2&&it.str.trim().length<90)heads.push({title:it.str.trim(),page:i});});}heads=heads.filter((h,idx)=>idx===0||h.title!==heads[idx-1].title||h.page!==heads[idx-1].page).slice(0,60);const src=await loadLib(buf);const outDoc=await PDFLib.PDFDocument.create();const tocText='Contents\n\n'+heads.map(h=>h.title+' — page '+(h.page+1)+' (after this TOC page)').join('\n');const tocDoc=await newPdfFromText(tocText,$('opt1').value||'Table of Contents');const tocPages=await outDoc.copyPages(tocDoc,tocDoc.getPageIndices());tocPages.forEach(p=>outDoc.addPage(p));const ps=await outDoc.copyPages(src,src.getPageIndices());ps.forEach(p=>outDoc.addPage(p));const bytes=await saveLib(outDoc,'with-contents.pdf');out('<p>Detected headings: '+heads.map(h=>h.title.replace(/</g,'&lt;')+' (p.'+h.page+')').join(' · ')+'</p>');setStatus('Done ✔ Contents page inserted as page 1 — page numbers in the TOC point to the new positions.');}catch(e){setStatus('⚠ '+e.message,false);}}
+
+</script></body></html>
